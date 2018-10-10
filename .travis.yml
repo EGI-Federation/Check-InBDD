@@ -1,0 +1,19 @@
+---
+language: ruby
+rvm:
+  - 2.4.1
+before_install:
+  - sudo apt-get install ruby ruby-dev
+  - gem update --system
+install:
+  - pip install yamllint
+  - bundle
+before_script:
+script:
+  - find . -name "*.yml" -exec yamllint {} \;
+  - rubocop
+  - cucumber --dry-run
+after_success:
+after_failure:
+after_script:
+notifications:
