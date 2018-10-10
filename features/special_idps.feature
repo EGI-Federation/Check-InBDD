@@ -8,5 +8,3 @@ Feature: Special Identity Providers
     Then I click on the red log in button on the top right
     Then I am taken to the IdP Proxy
     And I can see the ORCID option to log in.
-
-  

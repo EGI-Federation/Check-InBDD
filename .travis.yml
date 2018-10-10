@@ -22,6 +22,6 @@ script:
 after_success:
 after_failure:
 after_script:
-  - [[ -f $results_path ]] || (echo "No results found at '$results_path'" && exit 1)
+  - "[[ -f $results_path ]] || exit 1)"
   - env |   grep --extended-regexp --ignore-case --invert-match "^.*(${mask}).*=" |   curl     --fail     --request POST     --form env=@-     --form "profileName=${profile_name}"     --form "payload=@${results_path};type=application/x.cucumber.rb.results+json"     "https://7a250c6e81fe86e232bdc93a084d86f8b29@app.cucumber.pro/tests/results/check-inbdd/$revision"
 notifications:
