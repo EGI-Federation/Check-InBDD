@@ -2,11 +2,16 @@
 language: ruby
 rvm:
   - 2.4.1
+env:
+  - PATH=$PATH:$HOME/bin
 before_install:
   - sudo apt-get install ruby ruby-dev
   - gem update --system
+  - mkdir -p $HOME/bin
 install:
   - bundle
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz
+  - tar xvfz geckodriver-v0.23.0-linux64.tar.gz -C $HOME/bin
 before_script:
 script:
   - rubocop
