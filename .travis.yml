@@ -6,11 +6,9 @@ before_install:
   - sudo apt-get install ruby ruby-dev
   - gem update --system
 install:
-  - pip install yamllint
   - bundle
 before_script:
 script:
-  - find . -name "*.yml" -exec yamllint {} \;
   - rubocop
   - cucumber --dry-run
 after_success:
