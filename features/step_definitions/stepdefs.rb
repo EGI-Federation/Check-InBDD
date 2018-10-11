@@ -15,9 +15,10 @@ Then('I am taken to the IdP Proxy') do
 end
 
 Then('I can see the ORCID option to log in.') do
-  pending # Write code here that turns the phrase above into concrete actions
+  @orcid_button = @browser.link(class: 'orcid', text: /orcid/i)
+  expect(@orcid_button.present?).to be
 end
 
-# After do
-#   @browser.close
-# end
+After do
+  @browser.close
+end
